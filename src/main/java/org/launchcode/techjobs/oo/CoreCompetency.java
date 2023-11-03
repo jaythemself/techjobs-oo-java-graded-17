@@ -8,6 +8,16 @@ public class CoreCompetency {
     private static int nextId = 1;
     private String value;
 
+    // Task 2 (CoreCompetency part 1)
+    // Use Generate tool to add a Getter and a Setter for 'value'
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
     public CoreCompetency() {
         this.id = nextId;
         nextId++;
@@ -25,6 +35,12 @@ public class CoreCompetency {
         return value;
     }
 
+    // Task 2 (CoreCompetency part 2)
+    // Use Generate tool to add a Getter for 'id'
+    public int getId() {
+        return id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -37,8 +53,5 @@ public class CoreCompetency {
     public int hashCode() {
         return Objects.hash(id);
     }
-
-    // TODO: Use the "Generate" tool to add a getter and setter for the 'value' field but
-    //  ONLY a getter for the 'id' field.
 
 }

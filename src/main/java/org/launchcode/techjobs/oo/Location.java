@@ -13,9 +13,13 @@ public class Location {
         nextId++;
     }
 
-    // TODO: Add a constructor that takes a string as a parameter and assigns it to the 'value' field. The
-    //  constructor should also call the empty constructor in order to initialize the 'id' field.
-
+    // Task 2 (Location):
+    // Add a constructor that takes a string as a parameter and assigns it to the 'value' field. (initialize the value field for a new object)
+    // The constructor should also call the empty (first) constructor in order to initialize the 'id' field.
+    public Location(String value) {
+        this();
+        this.value = value;
+    }
 
     // Custom toString, equals, and hashCode methods:
 
