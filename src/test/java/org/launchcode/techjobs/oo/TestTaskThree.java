@@ -11,9 +11,9 @@ import java.lang.reflect.Method;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by LaunchCode
- */
+ /**
+ ** Created by LaunchCode
+ **/
 public class TestTaskThree extends AbstractTest {
     @Mocked Job job;
     @Test
@@ -83,7 +83,6 @@ public class TestTaskThree extends AbstractTest {
         assertNotNull(getJobFieldString(aJob, "positionType", false));
         assertNotNull(getJobFieldString(aJob, "coreCompetency", false));
     }
-
 
     @Test
     public void testNameAccessors() throws ClassNotFoundException {
