@@ -2,7 +2,7 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
-//import static java.lang.System.lineSeparator;
+import static java.lang.System.lineSeparator;
 
 public class Job {
 
@@ -103,12 +103,16 @@ public class Job {
 
     @Override
     public String toString() {
-        if ((this.getName() == null) || (this.getEmployer() == null) || (this.getLocation() == null) || (this.getPositionType() == null) || (this.getCoreCompetency() == null)) {
-            return "Data not available";
-        }
+//        if ((this.getName() == null) || (this.getEmployer() == null) || (this.getLocation() == null) || (this.getPositionType() == null) || (this.getCoreCompetency() == null)) {
+//            return "Data not available";
+//        }
         // if (this.getName() [validate stuff here] && this.getEmployer() == null etc etc return OOPS)
         // Should be validating w .isEmpty()/.isBlank() etc too??
-
+        if (name.isBlank()) {name = "Data not available";}
+        if (employer.getValue().isBlank() || employer.getValue() == null) {employer.setValue("Data not available");}
+        if (location.getValue().isBlank() || location.getValue() == null) {location.setValue("Data not available");}
+        if (positionType.getValue().isBlank() || positionType.getValue() == null) {positionType.setValue("Data not available");}
+        if (coreCompetency.getValue().isBlank() || coreCompetency.getValue() == null) {coreCompetency.setValue("Data not available");}
 //        return String.format(lineSeparator() + "ID: " + this.getId()
 //                + lineSeparator() + "Name: " + this.getName()
 //                + lineSeparator() + "Employer: " + this.getEmployer()
@@ -118,16 +122,17 @@ public class Job {
 //                + lineSeparator()
 //        );
 
-        return String.format("\n" + "ID: " + this.getId()
-                + "\n" + "Name: " + this.getName()
-                + "\n" + "Employer: " + this.getEmployer()
-                + "\n" + "Location: " + this.getLocation()
-                + "\n" + "Position Type: " + this.getPositionType()
-                + "\n" + "Core Competency: " + this.getCoreCompetency()
-                + "\n"
-                //alt \n + "Field: " + field.getValue(), do either work easier w tests/validation needed?
+        String formattedString = String.format(lineSeparator() + "ID: " + id
+                + lineSeparator() + "Name: " + name
+                + lineSeparator() + "Employer: " + employer.getValue()
+                + lineSeparator() + "Location: " + location.getValue()
+                + lineSeparator() + "Position Type: " + positionType.getValue()
+                + lineSeparator() + "Core Competency: " + coreCompetency.getValue()
+                + lineSeparator()
+                //"\n" + "Field: " + this.getField() or alt "\n" + "Field: " + field.getValue(), do either work easier w tests/validation needed?
+                //both fail starts/ends w new line in the same way :(
         );
-
+        return formattedString;
     }
 
 }

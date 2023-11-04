@@ -2,7 +2,7 @@ package org.launchcode.techjobs.oo;
 
 import org.junit.Test;
 
-//import static java.lang.System.lineSeparator;
+import static java.lang.System.lineSeparator;
 
 import static org.junit.Assert.*;
 
@@ -106,11 +106,11 @@ public class JobTest {
         String exampleFirstChar = String.valueOf(exampleJob.toString().charAt(0));
         String exampleLastChar = String.valueOf(exampleJob.toString().charAt(exampleJob.toString().length() - 1));
 
-        //assertEquals(exampleFirstChar, lineSeparator());
-        //assertEquals(exampleLastChar, lineSeparator());
+        assertEquals(exampleFirstChar, lineSeparator());
+        assertEquals(exampleLastChar, lineSeparator());
 
-        assertEquals(exampleFirstChar, "\n");
-        assertEquals(exampleLastChar, "\n");
+        //assertEquals("\n", exampleFirstChar);
+       // assertEquals("\n", exampleLastChar);
 
         // Test failing again but NEW, more CONFUSING way. Progress!
         // Think I'm messing up lineSeparator() so rewriting with \n until that passes, then try to adjust for lineSep
@@ -152,8 +152,9 @@ public class JobTest {
 //                        + "\n" + "Core Competency: " + exampleJob.getCoreCompetency()
 //                        + "\n"
 //                , exampleJob.toString());
-        assertEquals("\n" + "ID: " + exampleJob.getId()
-                        + "\nName: Product tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Persistence\n"
+        assertEquals(lineSeparator() + "ID: " + exampleJob.getId()
+                        + lineSeparator() + "Name: Product tester" + lineSeparator() + "Employer: ACME" + lineSeparator() + "Location: Desert" + lineSeparator()
+                        + "Position Type: Quality control" + lineSeparator() + "Core Competency: Persistence" + lineSeparator()
                 , exampleJob.toString());
 
     }
@@ -163,7 +164,20 @@ public class JobTest {
 
     @Test
     public void testToStringHandlesEmptyField() {
-        //code here
+
+        Job exampleJob = new Job(
+                "Product tester",
+                new Employer("ACME"),
+                new Location(""),
+                new PositionType(""),
+                new CoreCompetency("Persistence")
+        );
+
+        assertEquals(lineSeparator() + "ID: " + exampleJob.getId()
+                        + lineSeparator() + "Name: Product tester" + lineSeparator() + "Employer: ACME" + lineSeparator() + "Location: Data not available" + lineSeparator()
+                        + "Position Type: Data not available" + lineSeparator() + "Core Competency: Persistence" + lineSeparator()
+                , exampleJob.toString());
+
     }
 
 }
