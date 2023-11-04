@@ -35,7 +35,7 @@ public class Job {
     }
 
 // Task 3 (Job part 5)
-// Generate the equals and hashCode methods. Consider two Job objects equal when their id fields match. (Just id then? Passed all but the Get(parameter) tests so yeah)
+// Generate the equals and hashCode methods. Consider two Job objects equal when their id fields match.
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -103,24 +103,12 @@ public class Job {
 
     @Override
     public String toString() {
-//        if ((this.getName() == null) || (this.getEmployer() == null) || (this.getLocation() == null) || (this.getPositionType() == null) || (this.getCoreCompetency() == null)) {
-//            return "Data not available";
-//        }
-        // if (this.getName() [validate stuff here] && this.getEmployer() == null etc etc return OOPS)
-        // Should be validating w .isEmpty()/.isBlank() etc too??
+
         if (name.isBlank()) {name = "Data not available";}
         if (employer.getValue().isBlank() || employer.getValue() == null) {employer.setValue("Data not available");}
         if (location.getValue().isBlank() || location.getValue() == null) {location.setValue("Data not available");}
         if (positionType.getValue().isBlank() || positionType.getValue() == null) {positionType.setValue("Data not available");}
         if (coreCompetency.getValue().isBlank() || coreCompetency.getValue() == null) {coreCompetency.setValue("Data not available");}
-//        return String.format(lineSeparator() + "ID: " + this.getId()
-//                + lineSeparator() + "Name: " + this.getName()
-//                + lineSeparator() + "Employer: " + this.getEmployer()
-//                + lineSeparator() + "Location: " + this.getLocation()
-//                + lineSeparator() + "Position Type: " + this.getPositionType()
-//                + lineSeparator() + "Core Competency: " + this.getCoreCompetency()
-//                + lineSeparator()
-//        );
 
         String formattedString = String.format(lineSeparator() + "ID: " + id
                 + lineSeparator() + "Name: " + name
@@ -129,8 +117,7 @@ public class Job {
                 + lineSeparator() + "Position Type: " + positionType.getValue()
                 + lineSeparator() + "Core Competency: " + coreCompetency.getValue()
                 + lineSeparator()
-                //"\n" + "Field: " + this.getField() or alt "\n" + "Field: " + field.getValue(), do either work easier w tests/validation needed?
-                //both fail starts/ends w new line in the same way :(
+
         );
         return formattedString;
     }

@@ -52,15 +52,3 @@ public abstract class JobField {
 
 }
 
-// Task 6:
-// DRY code. Move repeated code here and have Employer, Location, CoreCompetency, and PositionType inherit.
-// What fields do ALL FOUR classes have in common? Which constructors are the same? What getters and setters do they share? Which custom methods?
-// 1.1 Declare the common fields and code the constructors
-// 1.2 Use Generate to create appropriate getters and setters
-// 1.3 Add in custom methods
-// 1.4 To prevent the creation of a JobField object, make this class abstract
-
-// 2. Modify Employer to extend JobField as example is shown. Remove redundant code (id, value, nextId etc), getters and setters, custom methods
-//      The empty constructor is shared, but not the other. Replace with provided text using super keyword
-
-// 3. Repeat process with Location, CoreCompetency, PositionType classes. Ensure tests still pass
