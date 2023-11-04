@@ -1,13 +1,9 @@
 package org.launchcode.techjobs.oo;
 
 import org.junit.Test;
-
-//import static org.junit.Assert.assertNotEquals;
-//import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.*;
 
 public class JobTest {
-    //TODO: Create your unit tests here
 
 // Task 4
 // Create a JUnit Run Config
@@ -17,12 +13,13 @@ public class JobTest {
 //      Use assertNotEquals to verify IDs of the 2 objects are distinct
 //      Run test using run config created
 //      If test doesn't pass, try to first fix Job() constructor code
-
     @Test
     public void testSettingJobId() {
+
         Job exampleJobOne = new Job();
         Job exampleJobTwo = new Job();
         assertNotEquals(exampleJobOne.getId(), exampleJobTwo.getId());
+
     }
 
 // 2. Test Full Constructor
@@ -30,9 +27,9 @@ public class JobTest {
 //      Declare and initialize new Job object with provided data
 //      Use assertTrue and assertEquals statements to test constructor correctly assigns both the class and value of field
 //      Tests should have 5 assert statements of each type (instanceof keyword can check class of object. result is a boolean)
-
     @Test
     public void testJobConstructorSetsAllFields() {
+
         Job exampleAllFields = new Job(
                 "Product tester",
                 new Employer("ACME"),
@@ -40,7 +37,7 @@ public class JobTest {
                 new PositionType("Quality control"),
                 new CoreCompetency("Persistence")
         );
-        //assertTrue(exampleAllFields instanceof Job); context actions suggested changing it to line 44
+        //assertTrue(exampleAllFields instanceof Job); context actions suggested changing it to line 41
         //assertTrue(true);
         //assertEquals has to be used w getValue otherwise it brings up field (org.launchcode.techjobs.oo.Employer<ACME> vs java.lang.String<ACME>)
         //why did name pass then? bc it's Job which isn't a field of Job?? reread
@@ -60,7 +57,28 @@ public class JobTest {
 // 3. Test equals Method
 //      Define test called testJobsForEquality (equal if id value is same, regardless of other fields)
 //      Generate 2 Job objects that are identical EXCEPT id. Test returns false (true is irrelevant)
+    @Test
+    public void testJobsForEquality() {
 
+        Job exampleJobOne = new Job(
+                "Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence")
+        );
 
+        Job exampleJobTwo = new Job(
+                "Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence")
+        );
+
+        //original assertFalse(exampleJobOne.equals(exampleJobTwo)); prompted to simplify
+        assertNotEquals(exampleJobOne, exampleJobTwo);
+
+    }
 
 }
