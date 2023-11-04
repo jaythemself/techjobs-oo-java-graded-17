@@ -2,6 +2,8 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
+//import static java.lang.System.lineSeparator;
+
 public class Job {
 
     private int id;
@@ -94,6 +96,38 @@ public class Job {
 // Generate a getter for the id field.
     public int getId() {
         return id;
+    }
+
+// Task 5.2 (Job part 1)
+// 2. Code toString in Job class to pass toString test. String should contain a label for each field, followed by data stored in that field. Each field on its own line.
+
+    @Override
+    public String toString() {
+        if ((this.getName() == null) || (this.getEmployer() == null) || (this.getLocation() == null) || (this.getPositionType() == null) || (this.getCoreCompetency() == null)) {
+            return "Data not available";
+        }
+        // if (this.getName() [validate stuff here] && this.getEmployer() == null etc etc return OOPS)
+        // Should be validating w .isEmpty()/.isBlank() etc too??
+
+//        return String.format(lineSeparator() + "ID: " + this.getId()
+//                + lineSeparator() + "Name: " + this.getName()
+//                + lineSeparator() + "Employer: " + this.getEmployer()
+//                + lineSeparator() + "Location: " + this.getLocation()
+//                + lineSeparator() + "Position Type: " + this.getPositionType()
+//                + lineSeparator() + "Core Competency: " + this.getCoreCompetency()
+//                + lineSeparator()
+//        );
+
+        return String.format("\n" + "ID: " + this.getId()
+                + "\n" + "Name: " + this.getName()
+                + "\n" + "Employer: " + this.getEmployer()
+                + "\n" + "Location: " + this.getLocation()
+                + "\n" + "Position Type: " + this.getPositionType()
+                + "\n" + "Core Competency: " + this.getCoreCompetency()
+                + "\n"
+                //alt \n + "Field: " + field.getValue(), do either work easier w tests/validation needed?
+        );
+
     }
 
 }

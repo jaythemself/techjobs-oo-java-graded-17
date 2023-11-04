@@ -1,6 +1,9 @@
 package org.launchcode.techjobs.oo;
 
 import org.junit.Test;
+
+//import static java.lang.System.lineSeparator;
+
 import static org.junit.Assert.*;
 
 public class JobTest {
@@ -37,10 +40,10 @@ public class JobTest {
                 new PositionType("Quality control"),
                 new CoreCompetency("Persistence")
         );
-        //assertTrue(exampleAllFields instanceof Job); context actions suggested changing it to line 41
+        //assertTrue(exampleAllFields instanceof Job); context actions suggested changing it to line 43
         //assertTrue(true);
         //assertEquals has to be used w getValue otherwise it brings up field (org.launchcode.techjobs.oo.Employer<ACME> vs java.lang.String<ACME>)
-        //why did name pass then? bc it's Job which isn't a field of Job?? reread
+        //why did name pass then? bc it's Job/id which isn't a field of Job?? reread
         assertTrue(exampleAllFields.getName() instanceof String);
         assertTrue(exampleAllFields.getEmployer() instanceof Employer);
         assertTrue(exampleAllFields.getLocation() instanceof Location);
@@ -79,6 +82,88 @@ public class JobTest {
         //original assertFalse(exampleJobOne.equals(exampleJobTwo)); prompted to simplify
         assertNotEquals(exampleJobOne, exampleJobTwo);
 
+    }
+
+    // Task 5
+    // 1. Define test called testToStringStartsAndEndsWithNewLine
+    //      When passed a Job object should return a string that contains a blank line before and after job information
+    //      Use assertEquals to verify these characters are correct and use the exact formatting provided.
+    //      Be sure to use System.lineSeparator() to declare new line. Universal line break works on variety of OS. Need to use in Job class AND JobTests.
+    //      Test ONLY checks if the returned string starts and ends with a blank line at this point
+    //      Should fail before fixing.
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+
+        Job exampleJob = new Job(
+                "Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence")
+        );
+
+        String exampleFirstChar = String.valueOf(exampleJob.toString().charAt(0));
+        String exampleLastChar = String.valueOf(exampleJob.toString().charAt(exampleJob.toString().length() - 1));
+
+        //assertEquals(exampleFirstChar, lineSeparator());
+        //assertEquals(exampleLastChar, lineSeparator());
+
+        assertEquals(exampleFirstChar, "\n");
+        assertEquals(exampleLastChar, "\n");
+
+        // Test failing again but NEW, more CONFUSING way. Progress!
+        // Think I'm messing up lineSeparator() so rewriting with \n until that passes, then try to adjust for lineSep
+        // Yeah all tests up to this point pass with \n, come back later
+
+    }
+
+    // 3. Finish TDD for toString
+    //      Define test called testToStringContainsCorrectLabelsAndData (run to ensure fails)
+    //      Modify toString to make test pass/old tests continue to pass
+                        //    String exampleExpectedOutput = lineSeparator() + "ID: " + exampleJob.getId()
+                        //            + lineSeparator() + "Name: " + exampleJob.getName()
+                        //            + lineSeparator() + "Employer: " + exampleJob.getEmployer()
+                        //            + lineSeparator() + "Location: " + exampleJob.getLocation()
+                        //            + lineSeparator() + "Position Type: " + exampleJob.getPositionType()
+                        //            + lineSeparator() + "Core Competency: " + exampleJob.getCoreCompetency()
+                        //            ;
+    //      String should contain a label for each field, followed by data stored in that field. Each field on its own line.
+    //**      If field is empty, method should add "Data not available" after the label
+    //**      (Optional) If a Job object ONLY contains data for id field, method should return "OOPS! This job does not seem to exist."
+
+    //TODO: Last 2 tests for task 5, check and make sure things are printing correctly and older tests still pass, then task 6 & 7
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+
+        Job exampleJob = new Job(
+                "Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence")
+        );
+
+//        assertEquals("\n" + "ID: " + exampleJob.getId()
+//                        + "\n" + "Name: " + exampleJob.getName()
+//                        + "\n" + "Employer: " + exampleJob.getEmployer()
+//                        + "\n" + "Location: " + exampleJob.getLocation()
+//                        + "\n" + "Position Type: " + exampleJob.getPositionType()
+//                        + "\n" + "Core Competency: " + exampleJob.getCoreCompetency()
+//                        + "\n"
+//                , exampleJob.toString());
+        assertEquals("\n" + "ID: " + exampleJob.getId()
+                        + "\nName: Product tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Persistence\n"
+                , exampleJob.toString());
+
+    }
+
+    // 4. Define test called testToStringHandlesEmptyField
+    //      No specific instructions beyond "Follow the same TDD process"
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        //code here
     }
 
 }
